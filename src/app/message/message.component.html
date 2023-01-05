@@ -1,0 +1,74 @@
+<div class="container text-center py-5  text-center mt-3">
+  <div class="card pt-5" >
+      <a  data-toggle="modal" id="" data-target="#profile" data-bs-toggle="modal" data-bs-target="#profile">
+          <img src="{{imgPreview}}" class="avatar " alt="">
+
+      </a>
+      <h3 class="py-2">{{name}}</h3>
+      <button data-toggle="modal" data-target="#share" class="btn btn-default-outline share " data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i>  Share Profile</button>
+  </div>
+</div>
+<!-- profile photo Modal -->
+<div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" >Change photo</h5>
+
+                <button #closeModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+              <div class="container">
+                  <form action="" method="post">
+                      <label for="" class="text-muted">The file size of the photo should not exceed 7 MB</label>
+                      <input class="form-control" type="file" (change)="changeImg($event)" name="photo" id="">
+
+                  </form>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-info" [disabled]="disable" (click)="changeProfileImg()">Upload</button>
+              <button type="button" class="btn btn-outline-danger">Remove Photo</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!--  Share profile Modal -->
+
+<!-- /modal -->
+
+
+
+<!-- =================messages=================== -->
+<div class="container text-center my-5 text-center">
+  <div class="row">
+      <div class="col-md-4 mt-2" *ngFor="let message of messages">
+          <div class="card py-5">
+              <p>{{message.message}} </p>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Share Profile</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        http://localhost:4200/userprofile/{{userId}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>

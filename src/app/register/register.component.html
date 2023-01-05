@@ -1,0 +1,61 @@
+<div class="container  my-5">
+  <div class="user my-3 text-center">
+    <i class="far fa-edit user-icon"></i>
+    <h4 class="login">Register</h4>
+  </div>
+  <div class="row d-flex flex-row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-5  ">
+        <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+          <div>
+            <input class="form-control my-2" formControlName="firstName" placeholder="Enter your FirstName" type="text"
+              name="name">
+            <em class="text-danger"
+              *ngIf="registerForm.controls.firstName.errors && registerForm.controls.firstName.touched">firstName is
+              Required</em>
+          </div>
+          <div>
+            <input class="form-control my-2" formControlName="lastName" placeholder="Enter your LastName" type="text"
+              name="name">
+            <em class="text-danger"
+              *ngIf="registerForm.controls.lastName.errors && registerForm.controls.lastName.touched">lastName is
+              Required</em>
+          </div>
+          <div>
+            <input class="form-control my-2" formControlName="email" placeholder="Enter your email" type="email"
+              name="email">
+            <em class="text-danger"
+              *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.touched">email is
+              Required</em>
+            <em class="text-danger"
+              *ngIf="registerForm.controls.email.errors?.email && registerForm.controls.email.touched">email is
+              not Valid</em>
+          </div>
+          <div>
+            <input class="form-control my-2" formControlName="password" placeholder="Enter your Password"
+              type="password" name="password">
+            <em class="text-danger"
+              *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.touched">password
+              is
+              Required</em>
+          </div>
+          <div>
+            <input class="form-control  my-2" formControlName="cpassword" placeholder="Password Confirmation"
+              type="password" name="PasswordConfirmation">
+              <em class="text-danger"
+              *ngIf="registerForm.controls.cpassword.errors?.required && registerForm.controls.cpassword.touched">cpassword
+              is
+              Required</em>
+              <em class="text-danger"
+              *ngIf="registerForm.controls.cpassword.errors?.noMatch && registerForm.controls.cpassword.touched ">passwords is not match</em>
+          </div>
+          <em class="text-danger" *ngIf="errorMsg">
+            {{errorMsg}}
+          </em>
+          <button class="btn btn-default-outline my-4 w-100 rounded"  [disabled]="!registerForm.valid">Register</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

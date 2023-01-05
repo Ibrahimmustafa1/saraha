@@ -1,0 +1,80 @@
+<div class="container 25 mt-5 p-5" *ngIf="editForm">
+  <div class="container text-center py-5  text-center">
+    <div class="card pt-5">
+      <a data-toggle="modal" id="" data-target="#profile" data-bs-toggle="modal" data-bs-target="#profile">
+        <img src="{{imgPreview}}" class="avatar " alt="">
+
+      </a>
+      <h3 class="py-2">{{name}}</h3>
+
+    </div>
+  </div>
+  <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change photo</h5>
+
+          <button #closeModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="container">
+            <form action="" >
+              <label for="" class="text-muted">The file size of the photo should not exceed 7 MB</label>
+              <input class="form-control" type="file" (change)="changeImg($event)" name="photo" id="">
+
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-info" [disabled]="disable"
+            (click)="changeProfileImg()">Upload</button>
+          <button type="button" class="btn btn-outline-danger">Remove Photo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="editForm" (ngSubmit)="changeProfileData(editForm)">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="firstName" class="mb-2">firstName</label>
+        <sup>
+          <i class="fa-solid fa-pen-to-square ms-3 mt-2" (click)="edit(F)"></i>
+          <input id="firstName" #F type="text" readonly="true" class="form-control w-100" formControlName="firstName">
+          <em class="text-danger"
+          *ngIf="editForm.controls.firstName.errors && editForm.controls.firstName.touched">firstName is
+          Required</em>
+        </sup>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="lastName" class="mb-2">lastName</label>
+        <sup>
+          <i class="fa-solid fa-pen-to-square ms-3 mt-2" (click)="edit(L)"></i>
+          <input #L id="lastName" type="text" readonly class="form-control w-100" formControlName="lastName">
+          <em class="text-danger"
+          *ngIf="editForm.controls.lastName.errors && editForm.controls.lastName.touched">lastName is
+          Required</em>
+        </sup>
+      </div>
+
+      <div class="form-group col-md-6 mt-3">
+        <label for="email" class="mb-2">Email</label>
+        <sup>
+          <i class="fa-solid fa-pen-to-square ms-3 mt-2" (click)="edit(E)"></i>
+          <input #E id="email" type="text" readonly class="form-control w-100" formControlName="email">
+          <em class="text-danger"
+          *ngIf="editForm.controls.email.errors?.required && editForm.controls.email.touched">email is
+          Required</em>
+        <em class="text-danger"
+          *ngIf="editForm.controls.email.errors?.email && editForm.controls.email.touched">email is
+          not Valid</em>
+        </sup>
+      </div>
+    </div>
+    <button [disabled]="editForm.invalid || activate" class="btn btn-primary mt-2">Save</button>
+  </form>
+</div>
