@@ -30,7 +30,8 @@ https://user-images.githubusercontent.com/85252957/211160376-298f073b-6ffd-487c-
 <li>RWD</li>
 <li>Real Time Application</li>
 <li>SPA App</li>
-
+<li>Refactored with ES6 and ES7 syntax (eg: async/await)</li>
+<li>RESTful API</li>
 
 
 # BackEnd Reop
